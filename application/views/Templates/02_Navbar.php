@@ -76,7 +76,7 @@
                             <!-- <span class="badge badge-warning navbar-badge">15</span> -->
                         </a>
                         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                            <span class="dropdown-header">AKUN</span>
+                            <span class="dropdown-header"><?= $pembeli['nama_pembeli'] ?></span>
                             <div class="dropdown-divider"></div>
                             <a href="#" class="dropdown-item">
                                 <i class="fas fa-users mr-2"></i>Profil
