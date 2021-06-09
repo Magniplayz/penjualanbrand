@@ -6,7 +6,7 @@
         <!-- /.login-logo -->
         <div class="card">
             <div class="card-body login-card-body">
-                <p class="login-box-msg">Silahkan Login</p>
+                <p class="login-box-msg">Login Khusus Admin</p>
 
                 <form action="" method="post">
                     <label class="text-danger"><?= form_error('email') ?></label>
@@ -29,16 +29,13 @@
                     </div>
                     <div class="row">
                         <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Login</button>
+                            <button type="submit" class="btn btn-danger btn-block">Login</button>
                         </div>
                     </div>
                 </form>
                 <br>
-                <p class="mb-0">
-                    <a href="<?= base_url('Auth/register') ?>" class="text-center">Register jika belum memiliki akun</a>
-                </p>
                 <p class="mb-1">
-                    <a href="<?= base_url('Auth/loginAdmin') ?>">Admin login</a>
+                    <a href="<?= base_url('Auth') ?>">Bukan admin?</a>
                 </p>
             </div>
             <!-- /.login-card-body -->

@@ -34,9 +34,40 @@ class Auth extends CI_Controller
                 echo "Gagal Login";
             }
         } else {
-            $data['title'] = "Login";
+            $data['title'] = "Login - TRAVERN";
             $this->load->view('Templates/01_Header', $data);
             $this->load->view('Auth/LoginPembeli');
+            $this->load->view('Templates/09_JS');
+        }
+    }
+
+    public function loginAdmin()
+    {
+        //Validasi
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('pass', 'Password', 'required');
+
+        if ($this->form_validation->run() == true) {
+            $_POST = $this->input->post();
+            $email = $_POST['email'];
+            $pass = $_POST['pass'];
+            $this->db->where('email_karyawan', $email);
+            $this->db->where('pass_karyawan', $pass);
+            $login = $this->db->get('karyawan')->row_array();
+            if ($login) {
+                //Data yang akan masuk session
+                $data = [
+                    'id_karyawan' => $login['id_karyawan']
+                ];
+                $this->session->set_userdata($data);
+                redirect('Dashboard');
+            } else {
+                echo "Gagal Login";
+            }
+        } else {
+            $data['title'] = "Admin Login - TRAVERN";
+            $this->load->view('Templates/01_Header', $data);
+            $this->load->view('Auth/LoginAdmin');
             $this->load->view('Templates/09_JS');
         }
     }
@@ -70,10 +101,16 @@ class Auth extends CI_Controller
             }
         } else {
             //Jika Validasi Error, maka kembali ke tampilan
-            $data['title'] = "Register";
+            $data['title'] = "Register - TRAVERN";
             $this->load->view('Templates/01_Header', $data);
             $this->load->view('Auth/Register');
             $this->load->view('Templates/09_JS');
         }
+    }
+
+    public function logout()
+    {
+        $this->session->sess_destroy();
+        redirect('Auth');
     }
 }

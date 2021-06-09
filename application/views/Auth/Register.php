@@ -1,7 +1,7 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="#"><b>Brand</b>Shop</a>
+            <a href="#"><b>TRAVERN</b>Shop</a>
         </div>
         <!-- /.login-logo -->
         <div class="card">
