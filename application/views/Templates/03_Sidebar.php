@@ -115,7 +115,7 @@
                 <!-- <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image"> -->
             </div>
             <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
+                <a href="#" class="d-block"><?= $karyawan['nama_karyawan'] ?></a>
             </div>
         </div>
 
@@ -154,12 +154,21 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/charts/flot.html" class="nav-link">
+                            <a href="<?= base_url('Karyawan') ?>" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Karyawan</p>
                             </a>
                         </li>
                     </ul>
+                </li>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-box"></i>
+                        <p>
+                            Stok
+                            <!-- <span class="badge badge-info right">0</span> -->
+                        </p>
+                    </a>
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">

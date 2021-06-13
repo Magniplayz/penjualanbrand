@@ -78,7 +78,7 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('nama', 'Nama', 'required');
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[pembeli.email_pembeli]');
         $this->form_validation->set_rules('alamat', 'Alamat', 'required');
-        $this->form_validation->set_rules('no_hp', 'No HP', 'required', 'numeric');
+        $this->form_validation->set_rules('no_hp', 'No HP', 'required|numeric');
         $this->form_validation->set_rules('pass', 'Password', 'required');
 
         if ($this->form_validation->run() == true) {
