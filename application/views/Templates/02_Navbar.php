@@ -75,7 +75,7 @@
                 <?php endforeach; ?>
                 <div class="row mt-3">
                     <div class="col-sm-12 mx-auto">
-                        <a href="#" class="btn btn-success btn-flat">Checkout</a>
+                        <a href="<?= base_url('Checkout/add') ?>" class="btn btn-success btn-flat">Checkout</a>
                     </div>
                 </div>
             </div>

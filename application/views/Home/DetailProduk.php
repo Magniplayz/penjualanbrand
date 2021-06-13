@@ -81,7 +81,7 @@
                                 </form>
                             <?php endif; ?>
                             <?php if ($produk_masuk['jumlah'] - $produk_keluar['jumlah'] <= 0) :  ?>
-                                <div class="btn btn-primary btn-lg btn-flat">
+                                <div class="btn btn-danger btn-lg btn-flat">
                                     <i class="fas fa-exclamation-triangle fa-lg mr-2"></i>
                                     Habis
                                 </div>
