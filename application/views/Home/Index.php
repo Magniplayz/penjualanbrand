@@ -20,6 +20,9 @@
     <div class="content">
         <div class="container">
             <div class="row">
+                <div class="col-sm-4 col-md-4 col-lg-4">
+
+                </div>
             </div>
             <!-- /.row -->
         </div><!-- /.container-fluid -->
