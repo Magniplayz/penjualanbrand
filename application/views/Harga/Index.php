@@ -48,7 +48,7 @@
                                             <td><?= $data['ukuran_produk'] ?></td>
                                             <td><?= "Rp. " . number_format($data['harga_produk'], 0, ',', '.'); ?></td>
                                             <td>
-                                                <a href="#" class="btn btn-success btn-flat"><i class="fas fa-edit"></i></a>
+                                                <a href="<?= base_url('Harga/edit/') . $data['id_harga'] ?>" class="btn btn-success btn-flat"><i class="fas fa-edit"></i></a>
                                                 <a href="<?= base_url('Harga/delete/') . $data['id_harga'] ?>" class="btn btn-danger btn-flat"><i class="fas fa-trash" onclick="return confirm('Yakin akan menghapus harga?')"></i></a>
                                             </td>
                                         </tr>

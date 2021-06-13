@@ -53,6 +53,37 @@ class Harga extends CI_Controller
         }
     }
 
+    public function edit($id_harga)
+    {
+        $this->form_validation->set_rules('ukuran', 'Ukuran', 'required');
+        $this->form_validation->set_rules('harga', 'Harga', 'required');
+
+        if ($this->form_validation->run() == true) {
+            $_POST = $this->input->post();
+            $data = [
+                'ukuran_produk' => $_POST['ukuran'],
+                'harga_produk' => $_POST['harga']
+            ];
+            $this->db->set($data);
+            $this->db->where('id_harga', $id_harga);
+            $add = $this->db->update('harga');
+            if ($add) {
+                redirect('Harga');
+            } else {
+                echo "Gagal Update Harga";
+            }
+        } else {
+            $data['title'] = "Tambah Harga - TRAVERN";
+            $data['karyawan'] = $this->db->get_where('karyawan', ['id_karyawan' => $this->session->userdata('id_karyawan')])->row_array();
+            $data['harga'] = $this->db->get_where('harga', ['id_harga' => $id_harga])->row_array();
+            $this->load->view('Templates/01_Header', $data);
+            $this->load->view('Templates/03_Sidebar');
+            $this->load->view('Harga/Edit');
+            $this->load->view('Templates/07_Footer');
+            $this->load->view('Templates/09_JS');
+        }
+    }
+
     public function delete($id_harga)
     {
         $delete = $this->db->delete('harga', ['id_harga' => $id_harga]);
