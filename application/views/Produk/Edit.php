@@ -8,8 +8,8 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?= base_url('Harga') ?>">Harga</a></li>
-                        <li class="breadcrumb-item active">Edit</li>
+                        <li class="breadcrumb-item"><a href="<?= base_url('Produk') ?>">Produk</a></li>
+                        <li class="breadcrumb-item active">Add</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -31,30 +31,34 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form method="post" action="<?= base_url('Harga/edit/') . $harga['id_harga'] ?>">
+                            <form method="post" action="<?= base_url('Produk/edit/') . $produk['id_produk'] ?>" enctype="multipart/form-data">
                                 <div class="card-body">
+                                    <input type="hidden" name="old_image" value="<?= $produk['foto_produk'] ?>">
+                                    <div class="form-group">
+                                        <label for="">Nama Produk</label>
+                                        <input name="nama" type="text" class="form-control" placeholder="Masukkan Nama Produk" value="<?= $produk['nama_produk'] ?>">
+                                        <p class="text-danger"><?= form_error('nama') ?></p>
+                                    </div>
                                     <div class="form-group">
                                         <label for="">Ukuran</label>
-                                        <input name="ukuran" type="text" class="form-control" placeholder="Masukkan Ukuran" value="<?= $harga['ukuran_produk'] ?>">
-                                        <p class="text-danger"><?= form_error('ukuran') ?></p>
+                                        <select name="id_harga" class="form-control">
+                                            <?php foreach ($harga as $data) : ?>
+                                                <option value="<?= $data['id_harga'] ?>"><?= $data['ukuran_produk'] . " - " . "Rp. " . number_format($data['harga_produk'], 0, ',', '.') ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="">Harga</label>
-                                        <input name="harga" type="number" class="form-control" placeholder="Masukkan Harga" value="<?= $harga['harga_produk'] ?>">
-                                        <p class="text-danger"><?= form_error('harga') ?></p>
-                                    </div>
-                                    <!-- <div class="form-group">
-                                    <label for="exampleInputFile">File input</label>
-                                    <div class="input-group">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="exampleInputFile">
-                                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                                        </div>
-                                        <div class="input-group-append">
-                                            <span class="input-group-text" id="">Upload</span>
+                                        <label for="exampleInputFile">Foto</label>
+                                        <div class="input-group">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="exampleInputFile" name="image">
+                                                <label class="custom-file-label" for="exampleInputFile">Pilih File</label>
+                                            </div>
+                                            <!-- <div class="input-group-append">
+                                                <span class="input-group-text" id="">Upload</span>
+                                            </div> -->
                                         </div>
                                     </div>
-                                </div> -->
                                 </div>
                                 <!-- /.card-body -->
 

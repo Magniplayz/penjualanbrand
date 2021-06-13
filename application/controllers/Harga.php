@@ -73,7 +73,7 @@ class Harga extends CI_Controller
                 echo "Gagal Update Harga";
             }
         } else {
-            $data['title'] = "Tambah Harga - TRAVERN";
+            $data['title'] = "Ubah Harga - TRAVERN";
             $data['karyawan'] = $this->db->get_where('karyawan', ['id_karyawan' => $this->session->userdata('id_karyawan')])->row_array();
             $data['harga'] = $this->db->get_where('harga', ['id_harga' => $id_harga])->row_array();
             $this->load->view('Templates/01_Header', $data);
