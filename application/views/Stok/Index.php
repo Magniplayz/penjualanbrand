@@ -99,7 +99,7 @@
                     <div class="form-group">
                         <label>Tanggal Masuk</label>
                         <br>
-                        <input type="date" name="tgl" class="form-group">
+                        <input type="date" name="tgl" class="form-control">
                     </div>
                 </div>
                 <div class="modal-footer justify-content-between">

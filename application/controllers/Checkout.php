@@ -20,12 +20,14 @@ class Checkout extends CI_Controller
         $this->db->join('harga', 'produk.id_harga = harga.id_harga');
         $data['keranjang'] = $this->db->get_where('keranjang', ['id_pembeli' => $this->session->userdata('id_pembeli')])->result_array();
         //Ambil data checkout (group)
-        $this->db->select("MAX(no_antrean) AS no_antrean, MIN(tanggal_transaksi) AS tgl, SUM(jumlah) AS jumlah, SUM(harga_produk*jumlah) AS harga");
+        $this->db->select("MAX(transaksi.no_antrean) AS no_antrean, MIN(tanggal_transaksi) AS tgl, SUM(jumlah) AS jumlah, SUM(harga_produk*jumlah) AS harga, MAX(bayar.id_bayar) AS id_bayar, MAX(id_status) AS id_status, MAX(status) AS status");
         $this->db->from('transaksi');
         $this->db->join('produk', 'transaksi.id_produk = produk.id_produk');
         $this->db->join('harga', 'produk.id_harga = harga.id_harga');
+        $this->db->join('bayar', 'transaksi.no_antrean = bayar.no_antrean', 'left');
+        $this->db->join('status', 'transaksi.no_antrean = status.no_antrean', 'left');
         $this->db->where('id_pembeli', $this->session->userdata('id_pembeli'));
-        $this->db->group_by('no_antrean');
+        $this->db->group_by('transaksi.no_antrean');
         $data['checkout'] = $this->db->get()->result_array();
 
         $this->load->view('Templates/01_Header', $data);
@@ -75,6 +77,8 @@ class Checkout extends CI_Controller
         $data['transaksi'] = $this->db->get('transaksi')->result_array();
         //Ambil data bayar
         $data['bayar'] = $this->db->get_where('bayar', ['no_antrean' => $no_antrean])->row_array();
+        //Ambil data status
+        $data['status'] = $this->db->get_where('status', ['no_antrean' => $no_antrean])->row_array();
         $this->load->view('Templates/01_Header', $data);
         $this->load->view('Checkout/Cetak');
         $this->load->view('Templates/09_JS');

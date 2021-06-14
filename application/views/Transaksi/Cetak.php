@@ -1,3 +1,10 @@
+<?php
+$id_pembeli = 0;
+foreach ($transaksi as $data) {
+    $id_pembeli = $data['id_pembeli'];
+}
+$pembeli = $this->db->get_where('pembeli', ['id_pembeli' => $id_pembeli])->row_array();
+?>
 <div class="container">
     <div class="row">
         <div class="col-12">

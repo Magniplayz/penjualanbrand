@@ -8,7 +8,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item active">Checkout</li>
+                        <li class="breadcrumb-item active">Transaksi</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -24,7 +24,7 @@
                 <div class="col-sm-12 col-md-12 col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Halaman Checkout</h3>
+                            <h3 class="card-title">Halaman Transaksi</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -42,7 +42,7 @@
                                 </thead>
                                 <tbody>
                                     <?php $no = 1; ?>
-                                    <?php foreach ($checkout as $data) : ?>
+                                    <?php foreach ($transaksi as $data) : ?>
                                         <tr>
                                             <td><?= $no++ ?></td>
                                             <td><?= $data['no_antrean'] ?></td>
@@ -67,7 +67,15 @@
                                                 ?>
                                             </td>
                                             <td>
-                                                <a target="__blank" href="<?= base_url('Checkout/cetak/') . $data['no_antrean'] ?>" class="btn btn-success btn-flat"><i class="fas fa-print"></i></a>
+                                                <a target="__blank" href="<?= base_url('Transaksi/cetak/') . $data['no_antrean'] ?>" class="btn btn-success btn-flat" title="Cetak Invoice"><i class="fas fa-print"></i></a>
+                                                <?php if ($data['id_bayar'] == null) { ?>
+                                                    <a href="<?= base_url('Transaksi/bayar/') . $data['no_antrean'] ?>" class="btn btn-danger btn-flat" title="Konfirmasi Pembayaran"><i class="fas fa-donate"></i></a>
+                                                <?php } ?>
+                                                <?php if ($data['id_status'] != null) { ?>
+                                                    <?php if ($data['status'] != 'Sedang Dikirim') { ?>
+                                                        <a href="<?= base_url('Transaksi/kirim/') . $data['no_antrean'] ?>" class="btn btn-primary btn-flat" title="Konfirmasi Pesanan Sudah Dikirim"><i class="fas fa-shipping-fast"></i></a>
+                                                    <?php } ?>
+                                                <?php } ?>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

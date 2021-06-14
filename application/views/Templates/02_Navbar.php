@@ -31,9 +31,8 @@
                             <span class="dropdown-header"><?= $pembeli['nama_pembeli'] ?></span>
                             <div class="dropdown-divider"></div>
                             <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item">
+                            <a href="<?= base_url('Checkout') ?>" class="dropdown-item">
                                 <i class="fas fa-box mr-2"></i>Order
-                                <span class="float-right text-muted text-sm">0</span>
                             </a>
                             <div class="dropdown-divider"></div>
                             <!-- <a href="#" class="dropdown-item">

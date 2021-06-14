@@ -8,7 +8,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item active">Checkout</li>
+                        <li class="breadcrumb-item active">Penjualan</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -24,7 +24,8 @@
                 <div class="col-sm-12 col-md-12 col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Halaman Checkout</h3>
+                            <h3 class="card-title">Halaman Laporan Penjualan</h3>
+                            <a target="__blank" href="<?= base_url('Laporan/cetak_penjualan') ?>" class="btn btn-success btn-flat float-right"><i class="fas fa-print"></i></a>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -33,42 +34,20 @@
                                     <tr>
                                         <th>NO</th>
                                         <th>NO ANTRIAN</th>
+                                        <th>PEMBELI</th>
                                         <th>JUMLAH ITEM</th>
                                         <th>HARGA</th>
-                                        <th>PEMBAYARAN</th>
-                                        <th>STATUS</th>
-                                        <th>AKSI</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php $no = 1; ?>
-                                    <?php foreach ($checkout as $data) : ?>
+                                    <?php foreach ($transaksi as $data) : ?>
                                         <tr>
                                             <td><?= $no++ ?></td>
                                             <td><?= $data['no_antrean'] ?></td>
+                                            <td><?= $data['nama_pembeli'] ?></td>
                                             <td><?= $data['jumlah'] ?></td>
                                             <td><?= "Rp. " . number_format($data['harga'], 0, ',', '.'); ?></td>
-                                            <td>
-                                                <?php
-                                                if ($data['id_bayar'] == null) {
-                                                    echo "Menunggu Pembayaran";
-                                                } else {
-                                                    echo "Pembayaran Sudah Dikonfirmasi";
-                                                }
-                                                ?>
-                                            </td>
-                                            <td>
-                                                <?php
-                                                if ($data['id_status'] == null) {
-                                                    echo "Menunggu Konfirmasi Pembayaran";
-                                                } else {
-                                                    echo $data['status'];
-                                                }
-                                                ?>
-                                            </td>
-                                            <td>
-                                                <a target="__blank" href="<?= base_url('Checkout/cetak/') . $data['no_antrean'] ?>" class="btn btn-success btn-flat"><i class="fas fa-print"></i></a>
-                                            </td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>

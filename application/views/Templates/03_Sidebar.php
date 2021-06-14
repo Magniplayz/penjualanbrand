@@ -95,52 +95,38 @@
                     </a>
                 </li>
                 <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
+                    <a href="<?= base_url('Transaksi') ?>" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
                             Transaksi
-                            <!-- <i class="fas fa-angle-left right"></i> -->
-                            <span class="badge badge-info right">0</span>
                         </p>
                     </a>
-                    <!-- <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="pages/layout/top-nav.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Checkout</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Order</p>
-                            </a>
-                        </li>
-                    </ul> -->
                 </li>
-                <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-chart-pie"></i>
-                        <p>
-                            Laporan
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="pages/charts/chartjs.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Laporan Penjualan</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/charts/flot.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Laporan Stok</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                <?php if ($karyawan['level'] == 5) : ?>
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-chart-pie"></i>
+                            <p>
+                                Laporan
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="<?= base_url('Laporan') ?>" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Laporan Penjualan</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?= base_url('Laporan/stok') ?>" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Laporan Stok</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                <?php endif; ?>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
