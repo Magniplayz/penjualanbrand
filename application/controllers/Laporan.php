@@ -16,7 +16,7 @@ class Laporan extends CI_Controller
     {
         $data['title'] = "Laporan Penjualan - TRAVERN";
         $data['karyawan'] = $this->db->get_where('karyawan', ['id_karyawan' => $this->session->userdata('id_karyawan')])->row_array();
-        //Ambil data checkout (group)
+        //Ambil data transaksi
         $this->db->select("MAX(transaksi.no_antrean) AS no_antrean, MIN(tanggal_transaksi) AS tgl, SUM(jumlah) AS jumlah, SUM(harga_produk*jumlah) AS harga, MAX(bayar.id_bayar) AS id_bayar, MAX(id_status) AS id_status, MAX(status) AS status, MAX(nama_pembeli) AS nama_pembeli");
         $this->db->from('transaksi');
         $this->db->join('produk', 'transaksi.id_produk = produk.id_produk');

@@ -16,11 +16,7 @@ class Transaksi extends CI_Controller
     {
         $data['title'] = "Transaksi - TRAVERN";
         $data['karyawan'] = $this->db->get_where('karyawan', ['id_karyawan' => $this->session->userdata('id_karyawan')])->row_array();
-        //Ambil data keranjang
-        $this->db->join('produk', 'keranjang.id_produk = produk.id_produk');
-        $this->db->join('harga', 'produk.id_harga = harga.id_harga');
-        $data['keranjang'] = $this->db->get_where('keranjang', ['id_pembeli' => $this->session->userdata('id_pembeli')])->result_array();
-        //Ambil data checkout (group)
+        //Ambil data transaksi
         $this->db->select("MAX(transaksi.no_antrean) AS no_antrean, MIN(tanggal_transaksi) AS tgl, SUM(jumlah) AS jumlah, SUM(harga_produk*jumlah) AS harga, MAX(bayar.id_bayar) AS id_bayar, MAX(id_status) AS id_status, MAX(status) AS status");
         $this->db->from('transaksi');
         $this->db->join('produk', 'transaksi.id_produk = produk.id_produk');
@@ -41,11 +37,7 @@ class Transaksi extends CI_Controller
     {
         $data['title'] = "Tambah Pembayaran - TRAVERN";
         $data['karyawan'] = $this->db->get_where('karyawan', ['id_karyawan' => $this->session->userdata('id_karyawan')])->row_array();
-        //Ambil data keranjang
-        $this->db->join('produk', 'keranjang.id_produk = produk.id_produk');
-        $this->db->join('harga', 'produk.id_harga = harga.id_harga');
-        $data['keranjang'] = $this->db->get_where('keranjang', ['id_pembeli' => $this->session->userdata('id_pembeli')])->result_array();
-        //Ambil data checkout (group)
+        //Ambil data transaksi
         $this->db->select("MAX(no_antrean) AS no_antrean, MIN(tanggal_transaksi) AS tgl, SUM(jumlah) AS jumlah, SUM(harga_produk*jumlah) AS harga");
         $this->db->from('transaksi');
         $this->db->join('produk', 'transaksi.id_produk = produk.id_produk');
@@ -110,11 +102,7 @@ class Transaksi extends CI_Controller
         $data['title'] = "Cetak Invoice Order " . $no_antrean;
 
         $data['antrean'] = $no_antrean;
-        //Ambil data keranjang
-        $this->db->join('produk', 'keranjang.id_produk = produk.id_produk');
-        $this->db->join('harga', 'produk.id_harga = harga.id_harga');
-        $data['keranjang'] = $this->db->get_where('keranjang', ['id_pembeli' => $this->session->userdata('id_pembeli')])->result_array();
-        //Ambil data checkout
+        //Ambil data transaksi
         $this->db->join('produk', 'transaksi.id_produk = produk.id_produk');
         $this->db->join('harga', 'produk.id_harga = harga.id_harga');
         $this->db->where('no_antrean', $no_antrean);
