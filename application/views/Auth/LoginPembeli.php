@@ -38,7 +38,7 @@
                     <a href="<?= base_url('Auth/register') ?>" class="text-center">Register jika belum memiliki akun</a>
                 </p>
                 <p class="mb-1">
-                    <a href="<?= base_url('Auth/loginAdmin') ?>">Admin login</a>
+                    <a href="<?= base_url('Auth/loginAdmin') ?>">Login karyawan</a>
                 </p>
             </div>
             <!-- /.login-card-body -->

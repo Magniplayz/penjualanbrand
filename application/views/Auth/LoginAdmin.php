@@ -6,7 +6,7 @@
         <!-- /.login-logo -->
         <div class="card">
             <div class="card-body login-card-body">
-                <p class="login-box-msg">Login Khusus Admin</p>
+                <p class="login-box-msg">Login Khusus Karyawan / Owner</p>
 
                 <form action="" method="post">
                     <label class="text-danger"><?= form_error('email') ?></label>
@@ -35,7 +35,7 @@
                 </form>
                 <br>
                 <p class="mb-1">
-                    <a href="<?= base_url('Auth') ?>">Bukan admin?</a>
+                    <a href="<?= base_url('Auth') ?>">Bukan karyawan?</a>
                 </p>
             </div>
             <!-- /.login-card-body -->
