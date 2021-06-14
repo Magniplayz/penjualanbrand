@@ -24,7 +24,7 @@
                 <div class="col-sm-12 col-md-12 col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Halaman Checkout</h3>
+                            <h3 class="card-title">Halaman Checkout / Order</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -67,7 +67,10 @@
                                                 ?>
                                             </td>
                                             <td>
-                                                <a target="__blank" href="<?= base_url('Checkout/cetak/') . $data['no_antrean'] ?>" class="btn btn-success btn-flat"><i class="fas fa-print"></i></a>
+                                                <a title="Cetak Invoice" target="__blank" href="<?= base_url('Checkout/cetak/') . $data['no_antrean'] ?>" class="btn btn-success btn-flat"><i class="fas fa-print"></i></a>
+                                                <?php if ($data['status'] == 'Sedang Dikirim') : ?>
+                                                    <a title="Pesanan Telah Sampai" href="<?= base_url('Checkout/selesai/') . $data['no_antrean'] ?>" class="btn btn-primary btn-flat"><i class="fas fa-check"></i></a>
+                                                <?php endif; ?>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

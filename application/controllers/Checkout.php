@@ -83,4 +83,20 @@ class Checkout extends CI_Controller
         $this->load->view('Checkout/Cetak');
         $this->load->view('Templates/09_JS');
     }
+
+    public function selesai($no_antrean)
+    {
+        $data = [
+            'status' => 'Selesai'
+        ];
+
+        $this->db->set($data);
+        $this->db->where('no_antrean', $no_antrean);
+        $selesai = $this->db->update('status');
+        if ($selesai) {
+            redirect('Checkout');
+        } else {
+            echo "Gagal Menyelesaikan Pesanan";
+        }
+    }
 }
